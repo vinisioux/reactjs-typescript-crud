@@ -1,0 +1,238 @@
+{
+  "usuarios": [
+    {
+      "data": {
+        "name": "João Pedro",
+        "cpf": "894.651.324-55",
+        "email": "joaopedro@gmail.com",
+        "zipcode": "02012030",
+        "address": "Praça A Gazeta da Zona Norte",
+        "number": "65",
+        "neighborhood": "Santana",
+        "city": "São Paulo"
+      },
+      "id": 1
+    },
+    {
+      "data": {
+        "name": "João Miguel",
+        "cpf": "841.513.515-42",
+        "email": "joao@gmail.com",
+        "zipcode": "05541320",
+        "address": "Rua Abraham Bloemaert",
+        "number": "594",
+        "neighborhood": "Jardim das Vertentes",
+        "city": "São Paulo"
+      },
+      "id": 2
+    },
+    {
+      "data": {
+        "name": "Maria Luana",
+        "cpf": "894.513.216-51",
+        "email": "maria@gmail.com",
+        "zipcode": "04131110",
+        "address": "Rua Abraham Bosse",
+        "number": "3232",
+        "neighborhood": "Vila Gumercindo",
+        "city": "São Paulo"
+      },
+      "id": 3
+    },
+    {
+      "data": {
+        "name": "Enzo Gabriel",
+        "cpf": "641.891.981-98",
+        "email": "enzo@gmail.com",
+        "zipcode": "04286100",
+        "address": "Rua Abrahão Calux",
+        "number": "6546",
+        "neighborhood": "Vila Moinho Velho",
+        "city": "São Paulo"
+      },
+      "id": 4
+    },
+    {
+      "data": {
+        "name": "Maria Eduarda",
+        "cpf": "198.189.111-20",
+        "email": "maria.eduarda@gmail.com",
+        "zipcode": "05516060",
+        "address": "Rua Abrahão Jorge Miguel",
+        "number": "11",
+        "neighborhood": "Caxingui",
+        "city": "São Paulo"
+      },
+      "id": 5
+    },
+    {
+      "data": {
+        "name": "João Lucas",
+        "cpf": "622.820.050-05",
+        "email": "joaolucas@gmail.com",
+        "zipcode": "05852410",
+        "address": "Rua Abram Chaim Pryzant",
+        "number": "979",
+        "neighborhood": "Parque Santo Antônio",
+        "city": "São Paulo"
+      },
+      "id": 6
+    },
+    {
+      "data": {
+        "name": "Maria Alice",
+        "cpf": "618.919.819-81",
+        "email": "alice@gmail.com",
+        "zipcode": "05625050",
+        "address": "Rua Abrão Calil Rezek",
+        "number": "4841",
+        "neighborhood": "Vila Sônia",
+        "city": "São Paulo"
+      },
+      "id": 7
+    },
+    {
+      "data": {
+        "name": "Davi Lucas",
+        "cpf": "123.459.567-75",
+        "email": "davilucas@gmail.com",
+        "zipcode": "02861050",
+        "address": "Rua Abílio Alves de Sousa",
+        "number": "123",
+        "neighborhood": "Vila Rica",
+        "city": "São Paulo"
+      },
+      "id": 8
+    },
+    {
+      "data": {
+        "name": "Maria Clara",
+        "cpf": "651.051.605-14",
+        "email": "mariaclara@gmail.com",
+        "zipcode": "04038030",
+        "address": "Rua Borges Lagoa",
+        "number": "34",
+        "neighborhood": "Vila Clementino",
+        "city": "São Paulo"
+      },
+      "id": 9
+    },
+    {
+      "data": {
+        "name": "Adriano Lucas",
+        "cpf": "684.916.151-21",
+        "email": "adriano@gmail.com",
+        "zipcode": "03953050",
+        "address": "Rua Borda do Campo",
+        "number": "552",
+        "neighborhood": "Jardim Cinco de Julho",
+        "city": "São Paulo"
+      },
+      "id": 10
+    },
+    {
+      "data": {
+        "name": "Hélio Santana",
+        "cpf": "649.811.818-16",
+        "email": "helio@gmail.com",
+        "zipcode": "04038030",
+        "address": "Rua Borges Lagoa",
+        "number": "421",
+        "neighborhood": "Vila Clementino",
+        "city": "São Paulo"
+      },
+      "id": 11
+    },
+    {
+      "data": {
+        "name": "Leticia Maria",
+        "cpf": "511.000.581-14",
+        "email": "leticia@gmail.com",
+        "zipcode": "04142081",
+        "address": "Avenida Bosque da Saúde",
+        "number": "18",
+        "neighborhood": "Saúde",
+        "city": "São Paulo"
+      },
+      "id": 15
+    },
+    {
+      "data": {
+        "name": "Carlos Eduardo",
+        "cpf": "984.651.016-10",
+        "email": "carloseduardo@gmail.com",
+        "zipcode": "04038901",
+        "address": "Rua Borges Lagoa 783",
+        "number": "510",
+        "neighborhood": "Vila Clementino",
+        "city": "São Paulo"
+      },
+      "id": 12
+    },
+    {
+      "data": {
+        "name": "Maicon Leandro",
+        "cpf": "461.898.511-04",
+        "email": "maicon@gmail.com",
+        "zipcode": "02252140",
+        "address": "Rua Borá",
+        "number": "84",
+        "neighborhood": "Vila Nivi",
+        "city": "São Paulo"
+      },
+      "id": 13
+    },
+    {
+      "data": {
+        "name": "Kaio Gustavo",
+        "cpf": "681.603.509-44",
+        "email": "kaio@gmail.com",
+        "zipcode": "04922160",
+        "address": "Travessa Bosque da Represa",
+        "number": "10",
+        "neighborhood": "Itupu",
+        "city": "São Paulo"
+      },
+      "id": 14
+    },
+    {
+      "data": {
+        "name": "Richard Lencaster",
+        "cpf": "984.616.816-51",
+        "email": "richard@gmail.com",
+        "zipcode": "38402019",
+        "address": "Rodovia BR-050",
+        "number": "67",
+        "neighborhood": "Minas Gerais",
+        "city": "Uberlândia"
+      },
+      "id": 16
+    },
+    {
+      "data": {
+        "name": "Pedro Lucas",
+        "cpf": "248.965.205-10",
+        "email": "pedrolucas@gmail.com",
+        "zipcode": "91540224",
+        "address": "Rua Flor de Lótus",
+        "number": "55",
+        "neighborhood": "Lomba do Pinheiro",
+        "city": "Porto Alegre"
+      },
+      "id": 17
+    },
+    {
+      "data": {
+        "name": "Lucas João",
+        "cpf": "846.512.386-51",
+        "email": "lucasjoao@gmail.com",
+        "zipcode": "91760581",
+        "address": "Praça Adel Carvalho",
+        "number": "21",
+        "neighborhood": "Jardim Isabel",
+        "city": "Porto Alegre"
+      },
+      "id": 18
+    }
+  ]
+}
