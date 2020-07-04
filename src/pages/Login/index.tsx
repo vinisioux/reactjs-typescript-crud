@@ -1,9 +1,8 @@
-import React, { useState, useContext, FormEvent } from 'react';
+import React, { useState, FormEvent } from 'react';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 import { useHistory } from 'react-router-dom';
-
-import { AuthContext } from '../../context/auth';
+import { useAuth } from '../../hooks/auth';
 
 import logo from '../../assets/logo.png';
 
@@ -15,7 +14,7 @@ const Home: React.FC = () => {
 
   const history = useHistory();
 
-  const { signIn } = useContext(AuthContext);
+  const { signIn } = useAuth();
 
   const handleSubmit = async (event: FormEvent) => {
     event?.preventDefault();

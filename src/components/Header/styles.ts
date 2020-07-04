@@ -12,6 +12,11 @@ export const HeaderContent = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  @media (max-width: 800px) {
+    flex-direction: column;
+    align-items: center;
+  }
+
   div {
     display: flex;
     align-items: center;
@@ -23,6 +28,11 @@ export const HeaderContent = styled.div`
   }
 
   button {
+    @media (max-width: 800px) {
+      margin-top: 5px;
+      border-bottom: 1px solid #444;
+    }
+
     background: transparent;
     border: 0;
     color: #fff;
@@ -40,22 +50,6 @@ export const HeaderContent = styled.div`
   }
 `;
 
-export const Menu = styled.div`
-  > a {
-    margin-right: 20px;
-  }
-
-  a {
-    text-decoration: none;
-    color: #fff;
-    transition: transform 0.2s;
-
-    &:hover {
-      transform: translateY(-2px);
-    }
-  }
-`;
-
 export const Profile = styled.div`
   margin-left: 30px;
   display: flex;
@@ -68,5 +62,30 @@ export const Profile = styled.div`
 
   strong {
     color: #fff;
+  }
+`;
+
+export const Menu = styled.div`
+  @media (max-width: 800px) {
+    flex-direction: column;
+
+    a {
+      margin-top: 5px;
+      border-bottom: 1px solid #444;
+    }
+  }
+
+  > a {
+    margin-right: 20px;
+  }
+
+  a {
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
   }
 `;

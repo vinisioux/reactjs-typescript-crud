@@ -1,15 +1,15 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { FiLogOut } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
-import { AuthContext } from '../../context/auth';
+import { useAuth } from '../../hooks/auth';
 
 import { Container, HeaderContent, Menu, Profile } from './styles';
 
 import logo from '../../assets/logo.png';
 
 const Header: React.FC = () => {
-  const { user, signOut } = useContext(AuthContext);
+  const { user, signOut } = useAuth();
 
   return (
     <Container>
@@ -24,7 +24,7 @@ const Header: React.FC = () => {
 
         <Menu>
           <Link to="/users">Listagem</Link>
-          <Link to="/register-user">Adicionar um usuário</Link>
+          <Link to="/form-user/add">Adicionar um usuário</Link>
         </Menu>
 
         <button type="button" onClick={signOut}>

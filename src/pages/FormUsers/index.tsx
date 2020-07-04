@@ -1,8 +1,14 @@
-import React, { useState, useCallback, FormEvent, ChangeEvent } from 'react';
+import React, {
+  useEffect,
+  useState,
+  useCallback,
+  FormEvent,
+  ChangeEvent,
+} from 'react';
 import InputMask from 'react-input-mask';
 import cep from 'cep-promise';
 import * as Yup from 'yup';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import api from '../../services/api';
@@ -10,6 +16,24 @@ import api from '../../services/api';
 import Header from '../../components/Header';
 
 import { Container, FormContent } from './styles';
+
+interface UserApiResponse {
+  data: {
+    name: string;
+    cpf: string;
+    email: string;
+    zipcode: string;
+    address: string;
+    number: string;
+    neighborhood: string;
+    city: string;
+  };
+  id: number;
+}
+
+interface UserParams {
+  id: string;
+}
 
 const FormUsers: React.FC = () => {
   const [name, setName] = useState<string>('');
@@ -22,6 +46,40 @@ const FormUsers: React.FC = () => {
   const [city, setCity] = useState<string>('');
 
   const history = useHistory();
+  const { params } = useRouteMatch<UserParams>();
+
+  useEffect(() => {
+    if (params.id !== 'add') {
+      api
+        .get<UserApiResponse[]>(`/usuarios?id=${params.id}`)
+        .then((response) => {
+          const {
+            name: nameResponse,
+            cpf: cpfResponse,
+            zipcode: zipcodeResponse,
+            address: addressResponse,
+            email: emailResponse,
+            number: numberResponse,
+            neighborhood: neighborhoodResponse,
+            city: cityResponse,
+          } = response.data[0].data;
+
+          setName(nameResponse);
+          setCpf(cpfResponse);
+          setZipcode(zipcodeResponse);
+          setAddress(addressResponse);
+          setEmail(emailResponse);
+          setNumber(numberResponse);
+          setNeighborhood(neighborhoodResponse);
+          setCity(cityResponse);
+        })
+        .catch((err) =>
+          toast.error(
+            `Ocorreu um erro inesperado... Tente novamente mais tarde\n${err}`,
+          ),
+        );
+    }
+  }, [params.id]);
 
   const handleAssignCEP = useCallback(
     async (event: ChangeEvent<HTMLInputElement>) => {
@@ -82,6 +140,15 @@ const FormUsers: React.FC = () => {
         return;
       }
 
+      if (params.id !== 'add') {
+        await api.put(`/usuarios/${params.id}`, {
+          data,
+        });
+        toast.success('Dados atualizados!');
+        history.push('/users');
+        return;
+      }
+
       await api.post('/usuarios', {
         data,
       });
@@ -89,7 +156,18 @@ const FormUsers: React.FC = () => {
       toast.success('Usuário cadastrado com sucesso!');
       history.push('/users');
     },
-    [name, cpf, email, zipcode, address, number, neighborhood, city, history],
+    [
+      name,
+      cpf,
+      email,
+      zipcode,
+      address,
+      number,
+      neighborhood,
+      city,
+      history,
+      params.id,
+    ],
   );
 
   return (
@@ -97,7 +175,11 @@ const FormUsers: React.FC = () => {
       <Header />
       <Container>
         <div className="title">
-          <strong>Cadastrar um astronauta</strong>
+          {params.id === 'add' ? (
+            <strong>Cadastrar um astronauta</strong>
+          ) : (
+            <strong>Atualizar os dados do astronauta</strong>
+          )}
         </div>
         <FormContent>
           <form onSubmit={handleSubmit}>
@@ -106,27 +188,27 @@ const FormUsers: React.FC = () => {
                 <input
                   type="text"
                   placeholder="Nome completo"
-                  value={name}
+                  value={name || ''}
                   onChange={(e) => setName(e.target.value)}
                 />
                 <InputMask
                   type="text"
                   mask="999.999.999-99"
                   placeholder="CPF"
-                  value={cpf}
+                  value={cpf || ''}
                   onChange={(e) => setCpf(e.target.value)}
                 />
                 <input
                   type="text"
                   placeholder="E-mail"
-                  value={email}
+                  value={email || ''}
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <InputMask
                   type="text"
                   mask="99999-999"
                   placeholder="CEP"
-                  value={zipcode}
+                  value={zipcode || ''}
                   onChange={handleAssignCEP}
                 />
               </div>
@@ -134,30 +216,36 @@ const FormUsers: React.FC = () => {
                 <input
                   type="text"
                   placeholder="Enderço"
-                  value={address}
+                  value={address || ''}
                   onChange={(e) => setAddress(e.target.value)}
                 />
                 <input
                   type="text"
                   placeholder="Número"
-                  value={number}
+                  value={number || ''}
                   onChange={(e) => setNumber(e.target.value)}
                 />
                 <input
                   type="text"
                   placeholder="Bairro"
-                  value={neighborhood}
+                  value={neighborhood || ''}
                   onChange={(e) => setNeighborhood(e.target.value)}
                 />
                 <input
                   type="text"
                   placeholder="Cidade"
-                  value={city}
+                  value={city || ''}
                   onChange={(e) => setCity(e.target.value)}
                 />
               </div>
             </div>
-            <button type="submit">Cadastrar</button>
+            <button type="submit">
+              {params.id === 'add' ? (
+                <strong>Cadastrar</strong>
+              ) : (
+                <strong>Atualizar</strong>
+              )}
+            </button>
           </form>
         </FormContent>
       </Container>

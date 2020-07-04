@@ -6,16 +6,16 @@ import Routes from './routes';
 
 import GlobalStyle from './styles/global';
 
-import { AuthProvider } from './context/auth';
+import AppProvider from './hooks';
 
 const App: React.FC = () => (
   <>
-    <AuthProvider>
+    <AppProvider>
       <BrowserRouter>
         <Routes />
         <ToastContainer autoClose={3000} />
       </BrowserRouter>
-    </AuthProvider>
+    </AppProvider>
 
     <GlobalStyle />
   </>

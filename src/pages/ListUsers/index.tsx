@@ -1,9 +1,10 @@
-import React, { useCallback, useEffect, useState, ChangeEvent } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { FiEdit, FiTrash2, FiSearch } from 'react-icons/fi';
 import { FaSpinner } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import { useHistory } from 'react-router-dom';
 import SimpleBar from 'simplebar-react';
+import { DebounceInput } from 'react-debounce-input';
 
 import api from '../../services/api';
 
@@ -47,33 +48,19 @@ const ListUsers: React.FC = () => {
     loadUsers();
   }, [loadUsers]);
 
-  const filterUsers = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    setLoading(true);
+  const filterUsers = useCallback((text: string) => {
     api
-      .get<User[]>(`/usuarios?q=${event.target.value}&_sort=id&_order=desc`)
+      .get<User[]>(`/usuarios?q=${text}&_sort=id&_order=desc`)
       .then((response) => {
         setFilteredUsers(response.data);
         setLoading(false);
       });
   }, []);
 
-  /* const filterUsers = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
-      const filteredData = users.filter((user) => {
-        return user.data.name
-          .toLowerCase()
-          .includes(event.target.value.toLowerCase());
-      });
-
-      return setFilteredUsers(filteredData);
-    },
-    [users],
-  ); */
-
   const handleEditUser = useCallback(
     (id: number) => {
       history.push({
-        pathname: `/update-user/${id}`,
+        pathname: `/form-user/${id}`,
         state: { id },
       });
     },
@@ -111,10 +98,11 @@ const ListUsers: React.FC = () => {
           </div>
           <div className="input-search">
             <FiSearch color="#222" size={20} />
-            <input
+            <DebounceInput
               type="text"
+              debounceTimeout={500}
               placeholder="Digite um nome para buscar..."
-              onChange={filterUsers}
+              onChange={(event) => filterUsers(event.target.value)}
             />
           </div>
           {loading ? (
