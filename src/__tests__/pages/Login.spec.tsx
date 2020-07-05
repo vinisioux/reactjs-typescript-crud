@@ -43,4 +43,21 @@ describe('Login Page', () => {
       expect(mockedHistoryPush).toHaveBeenCalledWith('/users');
     });
   });
+
+  it('should not be able to login with invalid credentials', async () => {
+    const { getByPlaceholderText, getByText } = render(<Login />);
+
+    const emailField = getByPlaceholderText('Digite seu e-mail');
+    const passwordField = getByPlaceholderText('Digite sua senha');
+    const buttonElement = getByText('Entrar');
+
+    fireEvent.change(emailField, { target: { value: 'wrongemail' } });
+    fireEvent.change(passwordField, { target: { value: '??' } });
+
+    fireEvent.click(buttonElement);
+
+    await wait(() => {
+      expect(mockedHistoryPush).not.toHaveBeenCalled();
+    });
+  });
 });

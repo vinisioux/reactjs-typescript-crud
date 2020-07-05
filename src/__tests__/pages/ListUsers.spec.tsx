@@ -179,7 +179,7 @@ describe('List Users', () => {
     ]);
 
     await wait(() => expect(getByText('João Lucas')).toBeTruthy(), {
-      timeout: 2000,
+      timeout: 3000,
     });
     expect(getByText('846.512.386-51')).toBeTruthy();
     expect(getByText('joaolucas@gmail.com')).toBeTruthy();
