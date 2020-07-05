@@ -49,6 +49,14 @@ const FormUsers: React.FC = () => {
   const { params } = useRouteMatch<UserParams>();
 
   useEffect(() => {
+    setName('');
+    setCpf('');
+    setZipcode('');
+    setAddress('');
+    setEmail('');
+    setNumber('');
+    setNeighborhood('');
+    setCity('');
     if (params.id !== 'add') {
       api
         .get<UserApiResponse[]>(`/usuarios?id=${params.id}`)
